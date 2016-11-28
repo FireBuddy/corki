@@ -264,7 +264,7 @@ namespace Borki7
                 if (useQ && Q.IsReady() && target.IsValidTarget(Q.Range) && !Orbwalker.IsAutoAttacking)
                 {
                     var Pred = Q.GetPrediction(target);
-                    if (Pred.HitChance >= HitChance.High)
+                    if ((pred.HitChancePercent >= 90))
                     {
                         Q.Cast(Pred.CastPosition);
                     }
