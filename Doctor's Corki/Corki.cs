@@ -50,7 +50,7 @@ namespace Borki7
             E = new Spell.Active(SpellSlot.E, 600);
             R = new Spell.Skillshot(SpellSlot.R, 1200, SkillShotType.Linear, 200, 1950, 40);
             Botrk = new Item( ItemId.Blade_of_the_Ruined_King);
-            Botrk2 = new Item( ItemId.Hextech_Gunblade),
+            Botrk2 = new Item( ItemId.Hextech_Gunblade);
             Bil = new Item(3144, 475f);
             Ignite = new Spell.Targeted(ObjectManager.Player.GetSpellSlotFromName("summonerdot"), 600);
             Menu = MainMenu.AddMenu("Doctor's Corki", "Corki");
