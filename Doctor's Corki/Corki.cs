@@ -23,6 +23,7 @@ namespace Borki7
         public static Spell.Skillshot R;
         public static Item Botrk;
         public static Item Bil;
+	public static Item Botrk2;
         public static Spell.Targeted Ignite;
         public static Menu Menu, SpellMenu, HarassMenu, ClearMenu, KillstealMenu, JungleMenu, items, Misc;
 
