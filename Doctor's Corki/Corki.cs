@@ -117,7 +117,7 @@ namespace Borki7
 // Game OnTick
 	private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
-            CurrentTarget = TargetSelector.GetTarget(Q.Cast.Range, DamageType.Magical);
+            CurrentTarget = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
             //(CurrentTarget.Hero != Champion.Yasuo && sender.Mana <= 90)//
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass) && sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Cast.Range) && Q.IsReady() && sender.IsEnemy)
             {
