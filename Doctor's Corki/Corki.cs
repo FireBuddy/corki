@@ -119,7 +119,7 @@ namespace Borki7
         {
             CurrentTarget = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
             //(CurrentTarget.Hero != Champion.Yasuo && sender.Mana <= 90)//
-            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass) && sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Cast.Range) && Q.IsReady() && sender.IsEnemy)
+            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass) && sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Range) && Q.IsReady() && sender.IsEnemy)
             {
 
                     if (CurrentTarget.Hero != Champion.Yasuo)
