@@ -35,6 +35,7 @@ namespace Borki7
         static void Main(string[] args)
         {
             Loading.OnLoadingComplete += OnLoadingComplete;
+	    
         }
 
 // Menu
@@ -110,10 +111,30 @@ namespace Borki7
             Game.OnUpdate += Game_OnUpdate;
             Drawing.OnDraw += Drawing_OnDraw;
             Orbwalker.OnPostAttack += ResetAttack;
+            Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
         }
 
 // Game OnTick
+	private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            var CurrentTarget = TargetSelector.GetTarget(Q.Cast.Range, DamageType.Magical);
+            //(CurrentTarget.Hero != Champion.Yasuo && sender.Mana <= 90)//
+            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass) && sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Cast.Range) && Q.Cast.IsReady() && sender.IsEnemy)
+            {
 
+                    if (CurrentTarget.Hero != Champion.Yasuo)
+                    {
+                    Q.Cast(sender.ServerPosition);
+                    //Chat.Print("Basic Attack:"+args.SData.Name);
+                    }
+                    else if (sender.Mana <= 90)
+                    {
+                    Q.Cast(sender.ServerPosition);
+                    }
+                    
+             }
+            
+	}
         private static void Game_OnUpdate(EventArgs args)
         {
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo))
