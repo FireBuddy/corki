@@ -26,7 +26,7 @@ namespace Borki7
 	public static Item Botrk2;
         public static Spell.Targeted Ignite;
         public static Menu Menu, SpellMenu, HarassMenu, ClearMenu, KillstealMenu, JungleMenu, items, Misc;
-
+	public static AIHeroClient CurrentTarget;
         public static AIHeroClient _Player
         {
             get { return ObjectManager.Player; }
@@ -117,9 +117,9 @@ namespace Borki7
 // Game OnTick
 	private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
-            var CurrentTarget = TargetSelector.GetTarget(Q.Cast.Range, DamageType.Magical);
+            CurrentTarget = TargetSelector.GetTarget(Q.Cast.Range, DamageType.Magical);
             //(CurrentTarget.Hero != Champion.Yasuo && sender.Mana <= 90)//
-            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass) && sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Cast.Range) && Q.Cast.IsReady() && sender.IsEnemy)
+            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass) && sender == CurrentTarget && !sender.IsDashing() && sender.Type == GameObjectType.AIHeroClient && sender.IsValidTarget(Q.Cast.Range) && Q.IsReady() && sender.IsEnemy)
             {
 
                     if (CurrentTarget.Hero != Champion.Yasuo)
